@@ -1,9 +1,6 @@
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import ActivityListScreen from '../screens/ActivityListScreen'
-import ActivitySearchedScreen from '../screens/ActivitySearchedScreen'
-import AccountScreen from '../screens/AccountScreen'
-import MessageScreen from '../screens/MessageScreen'
-import ProfileScreen from '../screens/ProfileScreen'
+import { Platform } from 'react-native';
+import Screens from '../screens';
 import React from 'react';
 import ToyIcon from '../components/Icons/ToyIcon';
 import BubbleChatIcon from '../components/Icons/BubbleChatIcon';
@@ -16,16 +13,16 @@ import CommonStyle from '../themes/Common.Style';
 const ActivityNav = StackNavigator(
   {
     ActivityList: {
-      screen: ActivityListScreen,
+      screen: Screens.ActivityListScreen,
       navigationOptions: {
         header: null
       }
     },
     ActivitySearched: {
-      screen: ActivitySearchedScreen,
+      screen: Screens.ActivitySearchedScreen,
       navigationOptions: ({ navigation }) => ({
         title: `${enumerator.typeTitle[navigation.state.params.type]}`,
-        headerRight: <HeaderInput type={navigation.state.params.type} />,
+        headerRight: Platform.OS === 'ios' ? null : <HeaderInput type={navigation.state.params.type} />,
         headerTitleStyle: {
           color: 'white',
         },
@@ -53,7 +50,7 @@ const PrimaryNav = TabNavigator(
       }
     },
     Message: {
-      screen: MessageScreen,
+      screen: Screens.MessageScreen,
       navigationOptions: {
         tabBarLabel: '消息',
         tabBarIcon: ({ tintColor }) => {
@@ -64,7 +61,7 @@ const PrimaryNav = TabNavigator(
       },
     },
     Profile: {
-      screen: ProfileScreen,
+      screen: Screens.ProfileScreen,
       navigationOptions: {
         tabBarLabel: '我',
         tabBarIcon: ({ tintColor }) => (
@@ -95,7 +92,7 @@ const PrimaryNav = TabNavigator(
 const AccountNav = StackNavigator(
   {
     Account: {
-      screen: AccountScreen,
+      screen: Screens.AccountScreen,
     },
     Main: {
       screen: PrimaryNav

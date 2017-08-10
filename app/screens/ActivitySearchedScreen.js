@@ -7,6 +7,10 @@ import ActivityAction from '../components/ActivityAction';
 
 class ActivitySearchedScreen extends Component {
 
+    componentWillMount() {
+        this.props.navigation.state.params.type
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
