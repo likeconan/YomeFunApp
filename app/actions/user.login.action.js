@@ -3,21 +3,18 @@ import validator from 'validator';
 import yoaxios from '../lib/yoaxios';
 import UserModel from '../models/user.model';
 
-export function userLogin(obj, callback) {
-    return function (dispatch) {
+export function userLogin(obj) {
+    return new Promise((resolve, reject) => {
         yoaxios({
-            url: 'users/mobile',
+            url: 'users/login',
             params: obj
         }).then((data) => {
-            dispatch({
+            resolve({
                 type: UserConstant.USER_LOGIN_REGISTER,
-                payload: new UserModel(data.user).user
-            })
-            if (callback) {
-                callback()
-            }
+                payload: new UserModel(data).user
+            });
         });
-    }
+    })
 }
 
 export function editMobile(val) {

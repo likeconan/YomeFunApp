@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput } from 'react-native';
+import CommonText from './CommonText';
 import Styles from './Styles/FormTextField';
+
 
 class FormTextField extends Component {
     constructor(props) {
@@ -18,26 +20,26 @@ class FormTextField extends Component {
     }
 
     render() {
-        const color = this.props.white ? '#FAFAFA' : '#2196F3';
-        const placeColor = this.props.white ? '#E0E0E0' : '#9E9E9E';
         return (
             <View style={[Styles.view, this.props.viewStyle]} keyboardShouldPersistTaps='handled'>
-                <TextInput
-                    value={this.props.value}
-                    autoCorrect={false}
-                    keyboardType={this.props.keyboardType ? this.props.keyboardType : 'default'}
-                    placeholderTextColor={placeColor}
-                    selectionColor={color}
-                    style={{ color: color }}
-                    placeholder={this.props.placeholder}
-                    secureTextEntry={this.props.secure}
-                    underlineColorAndroid={this.state.focused ? color : '#ccc'}
-                    onBlur={this._blur}
-                    onFocus={this._focus}
-                    onChangeText={this.props.onChangeText} />
-                <Text style={{ color: '#D50000' }}>
+                <View style={[Styles.textCon]}>
+                    {this.props.icon}
+                    <TextInput
+                        value={this.props.value}
+                        style={[Styles.textInput]}
+                        autoCorrect={false}
+                        keyboardType={this.props.keyboardType ? this.props.keyboardType : 'default'}
+                        placeholder={this.props.placeholder}
+                        secureTextEntry={this.props.secure}
+                        underlineColorAndroid='transparent'
+                        onBlur={this._blur}
+                        onFocus={this._focus}
+                        onChangeText={this.props.onChangeText} />
+                </View>
+
+                <CommonText style={Styles.errorText}>
                     {(this.state.focused && this.state.blured || this.props.submitted) && !this.props.validated ? this.props.errorText : ''}
-                </Text>
+                </CommonText>
             </View>
         );
     }

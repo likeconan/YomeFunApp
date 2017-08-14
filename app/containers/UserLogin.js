@@ -10,14 +10,15 @@ import Styles from './Styles/UserLogin';
 @connect((store) => {
     return {
         loginViewModel: store.userLoginReducer.loginViewModel,
-        loading: store.userLoginReducer.loading
+        validation: store.userLoginReducer.validation,
     }
 })
 class UserLogin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            submitted: false
+            submitted: false,
+            isLoading: false
         }
     }
 
@@ -26,20 +27,23 @@ class UserLogin extends Component {
         this.setState({
             submitted: true
         });
-        // if (this.props.loginViewModel.validatedMobile && this.props.loginViewModel.validatedPassword) {
-        //     this.props.dispatch(userLogin(this.props.loginViewModel, () => {
-        //         debugger
-        //         const { navigate } = this.props.navigation;
-        //         navigate('Main')
-        //     }));
-        // }
-        const { navigate } = this.props.navigation;
-        navigate('Main')
-
+        if (this.props.validation.validatedMobile && this.props.validation.validatedPassword) {
+            this.setState({
+                isLoading: true
+            })
+            userLogin(this.props.loginViewModel).then((data) => {
+                this.setState({
+                    isLoading: false
+                })
+                this.props.dispatch(data);
+                const { navigate } = this.props.navigation;
+                navigate('Main')
+            })
+        }
     }
 
     render() {
-        const { loginViewModel, loading } = this.props;
+        const { loginViewModel, validation, loading } = this.props;
 
         return (
             <View style={[Styles.view]}>
@@ -50,7 +54,7 @@ class UserLogin extends Component {
                     submitted={this.state.submitted}
                     keyboardType='phone-pad'
                     errorText='请输入有效的手机号'
-                    validated={loginViewModel.validatedMobile}
+                    validated={validation.validatedMobile}
                     onChangeText={(val) => this.props.dispatch(editMobile(val))} />
                 <FormTextField
                     value={loginViewModel.password}
@@ -59,9 +63,9 @@ class UserLogin extends Component {
                     submitted={this.state.submitted}
                     secure={true}
                     errorText='请输入至少6位数的密码'
-                    validated={loginViewModel.validatedPassword}
+                    validated={validation.validatedPassword}
                     onChangeText={(val) => this.props.dispatch(editPassword(val))} />
-                <IconTextButton onPress={this._login}>
+                <IconTextButton onPress={this._login} isLoading={this.state.isLoading}>
                     悦，遇你所想
                 </IconTextButton>
             </View>

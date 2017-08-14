@@ -4,17 +4,15 @@ export default function reducer(state = {
     loginViewModel: {
         mobile: '',
         password: '',
+    },
+    validation: {
         validatedMobile: false,
         validatedPassword: false
     },
-    loading: false
+    loggedUser: {},
+    isAuthorize: false
 }, action) {
     switch (action.type) {
-        case 'LOADING:':
-            return {
-                ...state,
-                loading: true
-            }
         case UserConstant.USER_LOGIN_REGISTER:
             return {
                 ...state,
@@ -27,6 +25,9 @@ export default function reducer(state = {
                 loginViewModel: {
                     ...state.loginViewModel,
                     mobile: action.payload.val,
+                },
+                validation: {
+                    ...state.validation,
                     validatedMobile: action.payload.isMobile
                 }
             }
@@ -36,8 +37,12 @@ export default function reducer(state = {
                 loginViewModel: {
                     ...state.loginViewModel,
                     password: action.payload.val,
+                },
+                validation: {
+                    ...state.validation,
                     validatedPassword: action.payload.isPassword
                 }
+
             }
         default:
             return state;
