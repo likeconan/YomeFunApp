@@ -3,6 +3,8 @@ import { View } from 'react-native';
 import { connect } from 'react-redux'
 import { editMobile, userLogin, editPassword } from '../actions/user.login.action'
 import FormTextField from '../components/FormTextField';
+import AccountCircleIcon from '../components/Icons/AccountCircleIcon'
+import LockIcon from '../components/Icons/LockIcon'
 import IconTextButton from '../components/IconTextButton';
 import Styles from './Styles/UserLogin';
 
@@ -48,18 +50,24 @@ class UserLogin extends Component {
         return (
             <View style={[Styles.view]}>
                 <FormTextField
+                    icon={<AccountCircleIcon color='white'/>}
                     value={loginViewModel.mobile}
                     placeholder='手机号'
-                    white={true}
+                    textConStyle={Styles.textConStyle}
+                    textInputStyle={Styles.textInputStyle}
                     submitted={this.state.submitted}
                     keyboardType='phone-pad'
                     errorText='请输入有效的手机号'
+                    placeholderTextColor='white'
                     validated={validation.validatedMobile}
                     onChangeText={(val) => this.props.dispatch(editMobile(val))} />
                 <FormTextField
+                    icon={<LockIcon color='white'/>}
                     value={loginViewModel.password}
+                    textConStyle={Styles.textConStyle}
+                    textInputStyle={Styles.textInputStyle}
                     placeholder='密码'
-                    white={true}
+                    placeholderTextColor='white'
                     submitted={this.state.submitted}
                     secure={true}
                     errorText='请输入至少6位数的密码'

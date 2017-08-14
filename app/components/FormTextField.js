@@ -3,7 +3,6 @@ import { View, TextInput } from 'react-native';
 import CommonText from './CommonText';
 import Styles from './Styles/FormTextField';
 
-
 class FormTextField extends Component {
     constructor(props) {
         super(props);
@@ -22,21 +21,21 @@ class FormTextField extends Component {
     render() {
         return (
             <View style={[Styles.view, this.props.viewStyle]} keyboardShouldPersistTaps='handled'>
-                <View style={[Styles.textCon]}>
+                <View style={[Styles.textCon, this.props.textConStyle]}>
                     {this.props.icon}
                     <TextInput
                         value={this.props.value}
-                        style={[Styles.textInput]}
+                        style={[Styles.textInput, this.props.textInputStyle]}
                         autoCorrect={false}
                         keyboardType={this.props.keyboardType ? this.props.keyboardType : 'default'}
                         placeholder={this.props.placeholder}
+                        placeholderTextColor={this.props.placeholderTextColor}
                         secureTextEntry={this.props.secure}
                         underlineColorAndroid='transparent'
                         onBlur={this._blur}
                         onFocus={this._focus}
                         onChangeText={this.props.onChangeText} />
                 </View>
-
                 <CommonText style={Styles.errorText}>
                     {(this.state.focused && this.state.blured || this.props.submitted) && !this.props.validated ? this.props.errorText : ''}
                 </CommonText>
