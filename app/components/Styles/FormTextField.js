@@ -7,10 +7,13 @@ export default Styles = StyleSheet.create({
     },
     textCon: {
         backgroundColor: 'rgba(255,255,255,0.4)',
-        borderRadius: 5
+        borderRadius: 5,
+        height: 42,
     },
     textInput: {
-        marginLeft: 10
+        marginVertical: 4,
+        marginLeft: 10,
+        height: 32
     },
     errorText: {
         color: '#D50000',
