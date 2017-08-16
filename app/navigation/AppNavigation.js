@@ -89,20 +89,44 @@ const PrimaryNav = TabNavigator(
 
 
 
-const AccountNav = StackNavigator(
-  {
-    Account: {
-      screen: Screens.AccountScreen,
-    },
-    Main: {
-      screen: PrimaryNav
-    }
-  },
-  {
-    headerMode: 'none'
+const AppNavigation = (initialed = false, signedIn = false) => {
+  var initialRouteName = 'Main';
+  if (!initialed) {
+    initialRouteName = 'AppIntro'
+  } else if (initialed && !signedIn) {
+    initialRouteName = 'Account'
   }
-);
+
+  return StackNavigator(
+    {
+      AppIntro: {
+        screen: Screens.AppIntroScreen,
+        navigationOptions: {
+          gesturesEnabled: false
+        }
+      },
+      Account: {
+        screen: Screens.AccountScreen,
+        navigationOptions: {
+          gesturesEnabled: false
+        }
+      },
+      Main: {
+        screen: PrimaryNav,
+        navigationOptions: {
+          gesturesEnabled: false
+        }
+      }
+    },
+    {
+      headerMode: 'none',
+      mode: 'modal',
+      initialRouteName: initialRouteName
+    }
+  );
+}
 
 
 
-export default AccountNav
+
+export default AppNavigation
