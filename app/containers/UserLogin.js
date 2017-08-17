@@ -24,7 +24,6 @@ class UserLogin extends Component {
         }
     }
 
-
     _login = () => {
         this.setState({
             submitted: true
@@ -50,7 +49,7 @@ class UserLogin extends Component {
         return (
             <View style={[Styles.view]}>
                 <FormTextField
-                    icon={<AccountCircleIcon color='white'/>}
+                    icon={<AccountCircleIcon color='white' />}
                     value={loginViewModel.mobile}
                     placeholder='手机号'
                     textConStyle={Styles.textConStyle}
@@ -62,7 +61,7 @@ class UserLogin extends Component {
                     validated={validation.validatedMobile}
                     onChangeText={(val) => this.props.dispatch(editMobile(val))} />
                 <FormTextField
-                    icon={<LockIcon color='white'/>}
+                    icon={<LockIcon color='white' />}
                     value={loginViewModel.password}
                     textConStyle={Styles.textConStyle}
                     textInputStyle={Styles.textInputStyle}

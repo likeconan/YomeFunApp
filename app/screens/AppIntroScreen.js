@@ -8,7 +8,7 @@ class AppIntroScreen extends Component {
     }
     doneBtnHandle = () => {
         const { navigate } = this.props.navigation;
-        navigate('Main')
+        navigate('Account')
     }
     nextBtnHandle = (index) => {
         Alert.alert('Next');

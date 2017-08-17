@@ -129,4 +129,4 @@ const AppNavigation = (initialed = false, signedIn = false) => {
 
 
 
-export default AppNavigation
+export default AppNavigation()

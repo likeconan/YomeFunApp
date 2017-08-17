@@ -18,5 +18,5 @@ export default CommonStyles = {
     },
     secondaryBack: {
         color: '#E91E63'
-    }
+    },
 }

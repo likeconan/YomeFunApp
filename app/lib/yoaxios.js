@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from './config';
 import store from '../store';
-
+import { showToast } from '../actions/toast.action';
 
 export default (obj) => {
     var p = new Promise((resolve, reject) => {
@@ -15,6 +15,9 @@ export default (obj) => {
         }).then((response) => {
             resolve(response.data)
         }).catch((err) => {
+            store.dispatch(showToast({
+                message: 'Wrong login name'
+            }))
             reject(err);
         });
     })
