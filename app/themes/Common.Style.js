@@ -19,4 +19,8 @@ export default CommonStyles = {
     secondaryBack: {
         color: '#E91E63'
     },
+    warnColor: '#FF8F00',
+    errorColor: '#F44336',
+    successColor: '#43A047',
+    infoColor: '#0097A7'
 }

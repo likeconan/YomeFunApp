@@ -13,7 +13,9 @@ export function userLogin(obj) {
                 type: UserConstant.USER_LOGIN_REGISTER,
                 payload: new UserModel(data).user
             });
-        });
+        }).catch(() => {
+            reject()
+        })
     })
 }
 
