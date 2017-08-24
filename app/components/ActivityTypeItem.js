@@ -18,7 +18,7 @@ class ActivityTypeItem extends Component {
                         viewStyle={Styles.flex1}
                         source={item.source}
                         imageStyle={Styles.imageStyle}>
-                        <Text style={Styles.fontStyle}>{enumerator.typeTitle[item.type]}</Text>
+                        <Text style={Styles.fontStyle}>{enumerator.typeTitle[item.name]}</Text>
                     </FullBackImage>
                 </View>
 

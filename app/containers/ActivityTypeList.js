@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import ActivityTypeItem from '../components/ActivityTypeItem';
+import { addSearchRecord } from '../actions/search.records.action';
+import { getActivityTypes } from '../actions/activity.type.action';
+import { connect } from 'react-redux';
 
+@connect((store) => {
+    return {
+        data: store.activityTypeReducer.activityTypes
+    }
+})
 class ActivityTypeList extends Component {
 
-    _onPress = (type) => {
-        this.props.navigate('ActivitySearched', { type: type });
+
+    componentWillMount() {
+        this.props.dispatch(getActivityTypes())
+    }
+
+
+    _onPress = (uuid) => {
+        addSearchRecord({
+            activityTypeUUID: item.uuid
+        })
+        this.props.navigate('ActivitySearched', { type: item.name });
     }
 
     render() {
-        const data = [
-            {
-                source: require('../assets/default/food.jpg'),
-                type: 'food'
-            },
-            {
-                source: require('../assets/default/in-out-activity.jpg'),
-                type: 'party'
-            },
-            {
-                source: require('../assets/default/movie.jpg'),
-                type: 'movie'
-            },
-            {
-                source: require('../assets/default/trip.jpg'),
-                type: 'travel'
-            }
-        ]
+        const { data } = this.props
         return (
             <View style={{ flex: 1 }}>
                 {
@@ -35,7 +35,7 @@ class ActivityTypeList extends Component {
                             <ActivityTypeItem
                                 item={item}
                                 key={key}
-                                onPress={() => this._onPress(item.type)} />
+                                onPress={() => this._onPress(item)} />
                         )
                     })
                 }

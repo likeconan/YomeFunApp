@@ -11,6 +11,4 @@ export default enumerator = {
         party: '想玩什么？',
         travel: '想去哪儿？'
     }
-
-
 }
