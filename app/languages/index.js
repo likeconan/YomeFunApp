@@ -1,3 +1,4 @@
+import schemas from '../schemas';
 class Translate {
     constructor(lang) {
         switch (lang) {
@@ -9,6 +10,7 @@ class Translate {
                 break;
 
         }
+        schemas
     }
     instant = (prop) => {
         return prop && this.lang[prop.toLowerCase()] ? this.lang[prop.toLowerCase()] : prop;

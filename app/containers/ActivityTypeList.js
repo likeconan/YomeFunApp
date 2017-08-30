@@ -18,7 +18,7 @@ class ActivityTypeList extends Component {
     }
 
 
-    _onPress = (uuid) => {
+    _onPress = (item) => {
         addSearchRecord({
             activityTypeUUID: item.uuid
         })

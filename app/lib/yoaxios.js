@@ -13,6 +13,12 @@ export default (obj) => {
             params: obj.params,
             data: obj.data
         }).then((response) => {
+            if (obj.message) {
+                showToast({
+                    message: obj.message,
+                    type: 'success'
+                })
+            }
             resolve(response.data)
         }).catch((err) => {
             showToast({
