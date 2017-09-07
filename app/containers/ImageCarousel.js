@@ -1,7 +1,8 @@
 import Carousel from 'react-native-snap-carousel';
 import React, { Component } from 'react';
-import { View, Text, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import Styles from './Styles/ImageCarousel';
+import PhotoView from 'react-native-photo-view'
 import ModalResponsive from '../components/ModalResponsive';
 import { connect } from 'react-redux';
 import { closeCarousel } from '../actions/image.carousel.action';
@@ -39,9 +40,10 @@ class ImageCarousel extends Component {
                                         height: '100%'
                                     }}>
                                         <View style={Styles.imgConStyle}>
-                                            <Image
+                                            <PhotoView
                                                 source={img.source}
-                                                resizeMode='contain'
+                                                maximumZoomScale={3}
+                                                androidScaleType="fitCenter"
                                                 style={{ width: width, minHeight: '100%', maxHeight: '100%' }} />
                                         </View>
 

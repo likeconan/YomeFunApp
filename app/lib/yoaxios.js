@@ -9,7 +9,7 @@ export default (obj) => {
             url: obj.url,
             baseURL: config.apiUrl,
             method: obj.method ? obj.method : 'GET',
-            timeout: 100000,
+            timeout: 10000,
             params: obj.params,
             data: obj.data
         }).then((response) => {
@@ -22,7 +22,7 @@ export default (obj) => {
             resolve(response.data)
         }).catch((err) => {
             showToast({
-                message: err.response ? err.response.data.message : 'unknow_error',
+                message: err.response ? err.response.data.message : err.message,
                 type: 'error'
             })
             reject(err);
