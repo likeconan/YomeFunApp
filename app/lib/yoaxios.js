@@ -2,16 +2,21 @@ import axios from 'axios';
 import config from './config';
 import store from '../store';
 import showToast from './showToast';
+import UserAuthController from '../realm-controllers/user.auth.controller';
 
 export default (obj) => {
     var p = new Promise((resolve, reject) => {
+        debugger
         axios({
             url: obj.url,
             baseURL: config.apiUrl,
             method: obj.method ? obj.method : 'GET',
-            timeout: 10000,
+            timeout: 5000,
             params: obj.params,
-            data: obj.data
+            data: obj.data,
+            headers: {
+                'api-access-token': UserAuthController.auth.token
+            },
         }).then((response) => {
             if (obj.message) {
                 showToast({

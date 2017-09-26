@@ -5,22 +5,12 @@ import PrimaryNav from './PrimaryNav';
 import UserAuthController from '../realm-controllers/user.auth.controller';
 
 
-var initialed = false;
-var signedIn = false;
-
-
-var obj = UserAuthController.findAll()
-
-console.log(obj)
-
-
-UserAuthController.save({ token: '123', isAuthorize: true })
-
 debugger
 
-var obj2 = UserAuthController.findAll()
+var auth = UserAuthController.getAuth()
+var initialed = auth.isInitialed;
+var signedIn = auth.isAuthorize;
 
-console.log(obj2)
 
 var initialRouteName = 'Main';
 if (!initialed) {

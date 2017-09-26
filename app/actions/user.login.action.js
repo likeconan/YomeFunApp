@@ -2,6 +2,8 @@ import UserConstant from '../constants/user.constant'
 import validator from 'validator';
 import yoaxios from '../lib/yoaxios';
 import UserModel from '../models/user.model';
+import UserAuthCtrl from '../realm-controllers/user.auth.controller';
+
 
 export function userLogin(obj) {
     return new Promise((resolve, reject) => {
@@ -9,10 +11,16 @@ export function userLogin(obj) {
             url: 'users/login',
             params: obj
         }).then((data) => {
+            UserAuthCtrl.save({
+                isAuthorize: true,
+                isInitialed: true,
+                token: data.token
+            })
             resolve({
                 type: UserConstant.USER_LOGIN_REGISTER,
-                payload: new UserModel(data).user
+                payload: new UserModel(data.user).user
             });
+
         }).catch(() => {
             reject()
         })

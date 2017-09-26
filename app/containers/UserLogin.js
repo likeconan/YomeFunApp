@@ -38,7 +38,10 @@ class UserLogin extends Component {
                 })
                 this.props.dispatch(data);
                 const { navigate } = this.props.navigation;
-                navigate('Main')
+                navigate('Main');
+
+                
+
             }).catch(() => {
                 this.setState({
                     isLoading: false
