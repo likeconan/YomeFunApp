@@ -3,10 +3,12 @@ import config from './config';
 import store from '../store';
 import showToast from './showToast';
 import UserAuthController from '../realm-controllers/user.auth.controller';
+import NavigationHelper from './navigation.helper';
+import Lang from '../languages';
+
 
 export default (obj) => {
     var p = new Promise((resolve, reject) => {
-        debugger
         axios({
             url: obj.url,
             baseURL: config.apiUrl,
@@ -26,11 +28,13 @@ export default (obj) => {
             }
             resolve(response.data)
         }).catch((err) => {
+            if (err.response && err.response.status === 403) {
+                NavigationHelper.navigate('Account')
+            }
             showToast({
-                message: err.response ? err.response.data.message : err.message,
+                message: Lang.instant(err.response ? err.response.data.message : err.message),
                 type: 'error'
             })
-            reject(err);
         });
     })
     return p;

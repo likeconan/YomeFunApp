@@ -3,9 +3,7 @@ import Screens from '../screens';
 import React from 'react';
 import PrimaryNav from './PrimaryNav';
 import UserAuthController from '../realm-controllers/user.auth.controller';
-
-
-debugger
+import NavigationHelper from '../lib/navigation.helper';
 
 var auth = UserAuthController.getAuth()
 var initialed = auth.isInitialed;
@@ -18,7 +16,7 @@ if (!initialed) {
 } else if (initialed && !signedIn) {
   initialRouteName = 'Account'
 }
-
+initialRouteName = 'Main'
 
 
 
@@ -32,14 +30,20 @@ const AppNavigation = StackNavigator(
     },
     Account: {
       screen: Screens.AccountScreen,
-      navigationOptions: {
-        gesturesEnabled: false
+      navigationOptions: ({ navigation }) => {
+        NavigationHelper.setNavigation(navigation)
+        return {
+          gesturesEnabled: false
+        }
       }
     },
     Main: {
       screen: PrimaryNav,
-      navigationOptions: {
-        gesturesEnabled: false
+      navigationOptions: ({ navigation }) => {
+        NavigationHelper.setNavigation(navigation)
+        return {
+          gesturesEnabled: false
+        }
       }
     }
   },

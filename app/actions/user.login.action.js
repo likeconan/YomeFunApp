@@ -11,16 +11,16 @@ export function userLogin(obj) {
             url: 'users/login',
             params: obj
         }).then((data) => {
-            UserAuthCtrl.save({
+            return UserAuthCtrl.save({
                 isAuthorize: true,
                 isInitialed: true,
                 token: data.token
-            })
+            }, data)
+        }).then((user) => {
             resolve({
                 type: UserConstant.USER_LOGIN_REGISTER,
-                payload: new UserModel(data.user).user
+                payload: new UserModel(user.user).user
             });
-
         }).catch(() => {
             reject()
         })
