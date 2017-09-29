@@ -16,7 +16,7 @@ if (!initialed) {
 } else if (initialed && !signedIn) {
   initialRouteName = 'Account'
 }
-initialRouteName = 'Main'
+
 
 
 

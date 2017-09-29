@@ -5,13 +5,13 @@ import BubbleChatIcon from '../components/Icons/BubbleChatIcon';
 import PersonIcon from '../components/Icons/PersonIcon';
 import CameraIcon from '../components/Icons/CameraIcon';
 import Screens from '../screens';
-// import ActivityNav from './ActivityNav';
+import ActivityNav from './ActivityNav';
 
 
 const PrimaryNav = TabNavigator(
     {
         Activity: {
-            screen: Screens.ActivityListScreen,
+            screen: ActivityNav,
             navigationOptions: {
                 tabBarLabel: '活动',
                 tabBarIcon: ({ tintColor }) => {

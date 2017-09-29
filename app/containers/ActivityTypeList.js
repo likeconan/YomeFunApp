@@ -19,9 +19,9 @@ class ActivityTypeList extends Component {
 
 
     _onPress = (item) => {
-        addSearchRecord({
-            activityTypeUUID: item.uuid
-        })
+        // addSearchRecord({
+        //     activityTypeUUID: item.uuid
+        // })
         this.props.navigate('ActivitySearched', { type: item.name });
     }
 

@@ -17,7 +17,7 @@ export default (obj) => {
             params: obj.params,
             data: obj.data,
             headers: {
-                'api-access-token': UserAuthController.auth.token
+                'api-access-token': UserAuthController.getAuth().token
             },
         }).then((response) => {
             if (obj.message) {

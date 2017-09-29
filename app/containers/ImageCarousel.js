@@ -21,6 +21,7 @@ class ImageCarousel extends Component {
     }
     render() {
         const width = Dimensions.get('window').width;
+        console.log('img carousel')
         return (
             <ModalResponsive
                 visible={this.props.visible}

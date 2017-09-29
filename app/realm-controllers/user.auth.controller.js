@@ -2,11 +2,6 @@ import realm from '../realm-schemas';
 
 class UserAuthController {
 
-    constructor() {
-        var obj = realm.objects('UserAuth')[0];
-        this.auth = obj ? obj : {}
-    }
-
     getAuth = () => {
         var obj = realm.objects('UserAuth')[0];
         return obj ? obj : {};

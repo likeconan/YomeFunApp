@@ -12,7 +12,7 @@ class ActivityUserItem extends Component {
     }
 
     render() {
-        const images = [{ source: Images.toyIcon }, { source: {uri:'http://cdnq.duitang.com/uploads/item/201506/12/20150612060233_RzUEd.thumb.700_0.jpeg'} }, { source: Images.accountBackground }, { source: Images.accountBackground }]
+        const images = [{ source: Images.toyIcon }, { source: { uri: 'http://cdnq.duitang.com/uploads/item/201506/12/20150612060233_RzUEd.thumb.700_0.jpeg' } }, { source: Images.accountBackground }, { source: Images.accountBackground }]
         return (
             <View style={[Styles.flex1, Styles.auCon]}>
                 <View style={[Styles.flex1, Styles.userBtnCon]}>

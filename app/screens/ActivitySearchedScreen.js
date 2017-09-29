@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, ScrollView } from 'react-native';
 import ActivityUserItem from '../components/ActivityUserItem';
+import ActivitySearchedItem from '../components/ActivitySearchedItem';
 import ImageCarousel from '../containers/ImageCarousel';
 import CreateActivityModal from '../containers/CreateActivityModal';
 import ActivityAction from '../components/ActivityAction';
@@ -16,6 +17,7 @@ class ActivitySearchedScreen extends Component {
             <View style={{ flex: 1 }}>
                 <ScrollView >
                     <ActivityUserItem />
+                    <ActivitySearchedItem />
                     <ImageCarousel />
                     <CreateActivityModal />
                 </ScrollView>
