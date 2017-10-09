@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, Button } from 'react-native';
 import CommonText from '../components/CommonText';
+import IconTextButton from '../components/IconTextButton';
 import Styles from './Styles/ActivitySearchedItem';
 import Images from '../themes/Images';
 class ActivitySearchedItem extends Component {
@@ -24,6 +25,7 @@ class ActivitySearchedItem extends Component {
                 <Image
                     style={[Styles.firstImage]}
                     resizeMode='cover'
+                    resizeMethod='scale'
                     source={data.firstImage.source} />
                 <View style={[Styles.backCover]} elevation={2}>
 
@@ -33,6 +35,7 @@ class ActivitySearchedItem extends Component {
                         data.subImages.map((val, key) => (
                             <Image
                                 resizeMode='cover'
+                                resizeMethod='scale'
                                 key={key}
                                 style={[Styles.subImage]}
                                 source={val.source} />
@@ -48,6 +51,12 @@ class ActivitySearchedItem extends Component {
                         <CommonText style={[Styles.goingOnStyle]}>What is going on?</CommonText>
                     </View>
                 </View>
+                <View style={[Styles.contentCon]}>
+                    <CommonText style={[Styles.contentStyle]}>我想一起去看大海，有人一起吗？</CommonText>
+                </View>
+                <IconTextButton btnStyle={{marginBottom:0}}>
+                    邀请
+                </IconTextButton>
             </View>
         );
     }

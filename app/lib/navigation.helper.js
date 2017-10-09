@@ -1,3 +1,6 @@
+import store from '../store';
+import { toggleSwipeEnable } from '../actions/navigate.action';
+
 class NavigationHelper {
 
     constructor() {
@@ -13,6 +16,11 @@ class NavigationHelper {
             this.navigation.navigate(routeName)
         }
     }
+
+    toggleSwipeEnable = (val) => {
+        store.dispatch(toggleSwipeEnable(val))
+    }
+
 }
 
 export default new NavigationHelper()

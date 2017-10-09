@@ -5,7 +5,7 @@ class MessageScreen extends Component {
 
     render() {
         return (
-            <View>
+            <View screenProps={{hello:'123'}}>
                 <Text>Message Screen</Text>
             </View>
         )

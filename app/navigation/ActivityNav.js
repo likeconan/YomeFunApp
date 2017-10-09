@@ -3,13 +3,18 @@ import { StackNavigator } from 'react-navigation'
 import CommonStyle from '../themes/Common.Style';
 import Enumerator from '../lib/enumerator';
 import React from 'react';
+import NavigationHelper from '../lib/navigation.helper';
 
 const ActivityNav = StackNavigator(
     {
         ActivityList: {
             screen: Screens.ActivityListScreen,
-            navigationOptions: {
-                header: null,
+            navigationOptions: ({ navigation }) => {
+                NavigationHelper.toggleSwipeEnable(true)
+                return {
+                    header: null,
+                    gesturesEnabled: true,
+                }
             }
         },
         ActivitySearched: {
@@ -19,8 +24,9 @@ const ActivityNav = StackNavigator(
                 headerTitleStyle: {
                     color: 'white',
                 },
+                gesturesEnabled: true,
                 headerTintColor: 'white',
-                tarBarVisible: false,
+                tabBarVisible: false,
                 headerStyle: {
                     backgroundColor: CommonStyle.primary
                 }
@@ -28,7 +34,7 @@ const ActivityNav = StackNavigator(
         }
     },
     {
-        mode: 'modal',
+        headerMode: 'screen',
         initialRouteName: 'ActivityList'
     }
 )

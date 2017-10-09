@@ -29,7 +29,7 @@ const PrimaryNav = TabNavigator(
                     return (
                         <BubbleChatIcon color={tintColor} />
                     )
-                }
+                },
             },
         },
         StarSocial: {
@@ -40,7 +40,7 @@ const PrimaryNav = TabNavigator(
                     return (
                         <CameraIcon color={tintColor} />
                     )
-                }
+                },
             },
         },
         Profile: {
@@ -57,6 +57,8 @@ const PrimaryNav = TabNavigator(
     {
         tabBarPosition: 'bottom',
         initialRouteName: 'Activity',
+        lazy: true,
+        screenProps: { hello: true},
         tabBarOptions: {
             activeTintColor: '#03A9F4',
             inactiveTintColor: '#66757f',
@@ -67,7 +69,8 @@ const PrimaryNav = TabNavigator(
                 backgroundColor: 'white',
             },
             showIcon: true
-        }
+        },
+
     })
 
 export default PrimaryNav

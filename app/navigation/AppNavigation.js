@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation'
 import Screens from '../screens';
 import React from 'react';
 import PrimaryNav from './PrimaryNav';
+import ActivityNav from './ActivityNav';
 import UserAuthController from '../realm-controllers/user.auth.controller';
 import NavigationHelper from '../lib/navigation.helper';
 
@@ -16,7 +17,7 @@ if (!initialed) {
 } else if (initialed && !signedIn) {
   initialRouteName = 'Account'
 }
-
+initialRouteName = 'Main'
 
 
 
@@ -49,7 +50,6 @@ const AppNavigation = StackNavigator(
   },
   {
     headerMode: 'none',
-    mode: 'modal',
     initialRouteName: initialRouteName
   }
 );

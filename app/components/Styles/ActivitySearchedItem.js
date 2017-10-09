@@ -11,7 +11,6 @@ export default Styles = StyleSheet.create({
     firstImage: {
         height: 250,
         width: '100%',
-        justifyContent: 'flex-end',
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
     },
@@ -29,7 +28,7 @@ export default Styles = StyleSheet.create({
     subImgCon: {
         paddingVertical: 10,
         paddingHorizontal: 20,
-        backgroundColor: 'rgba(0,0,0,0.4)',
+        backgroundColor: 'rgba(0,0,0,0.3)',
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
@@ -55,12 +54,18 @@ export default Styles = StyleSheet.create({
     },
     nameStyle: {
         color: 'white',
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold'
     },
     goingOnStyle: {
         color: Colors.grey600,
-        fontSize: 14,
+        fontSize: 16,
+    },
+    contentCon:{
+        padding:20,
+    },
+    contentStyle:{
+        color:Colors.blueGrey500
     }
 
 })

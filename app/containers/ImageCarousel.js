@@ -6,6 +6,7 @@ import PhotoView from 'react-native-photo-view'
 import ModalResponsive from '../components/ModalResponsive';
 import { connect } from 'react-redux';
 import { closeCarousel } from '../actions/image.carousel.action';
+import Matrix from '../themes/Matrix';
 
 @connect((store) => {
     return {
@@ -14,47 +15,48 @@ import { closeCarousel } from '../actions/image.carousel.action';
         firstItem: store.imageCarouselReducer.firstItem
     }
 })
+
+
+
+
 class ImageCarousel extends Component {
 
     _closeImageDialog = () => {
         this.props.dispatch(closeCarousel())
     }
+
+    _renderItem = ({ item, index }) => {
+        return (
+            <View style={{
+                height: '100%'
+            }}>
+                <View style={Styles.imgConStyle}>
+                    <PhotoView
+                        source={item.source}
+                        onTap={this._closeImageDialog}
+                        onViewTap={this._closeImageDialog}
+                        maximumZoomScale={3}
+                        androidScaleType="fitCenter"
+                        style={{ width: Matrix.width, minHeight: '100%', maxHeight: '100%' }} />
+                </View>
+
+            </View>
+        )
+    }
+
     render() {
-        const width = Dimensions.get('window').width;
         console.log('img carousel')
         return (
             <ModalResponsive
                 visible={this.props.visible}
                 onRequestClose={this._closeImageDialog}>
                 <Carousel
-                    sliderWidth={width}
-                    itemWidth={width}
+                    sliderWidth={Matrix.width}
+                    itemWidth={Matrix.width}
+                    renderItem={this._renderItem}
+                    data={this.props.images}
                     firstItem={this.props.firstItem}
                 >
-                    {
-                        this.props.images.map((img, key) => {
-                            return (
-                                <TouchableWithoutFeedback
-                                    key={key}
-                                    onPress={this._closeImageDialog}>
-                                    <View style={{
-                                        height: '100%'
-                                    }}>
-                                        <View style={Styles.imgConStyle}>
-                                            <PhotoView
-                                                source={img.source}
-                                                maximumZoomScale={3}
-                                                androidScaleType="fitCenter"
-                                                style={{ width: width, minHeight: '100%', maxHeight: '100%' }} />
-                                        </View>
-
-                                    </View>
-                                </TouchableWithoutFeedback>
-                            )
-
-
-                        })
-                    }
                 </Carousel>
             </ModalResponsive>
 
