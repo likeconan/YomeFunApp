@@ -47,16 +47,22 @@ class ActivitySearchedItem extends Component {
                         source={Images.accountBackground}
                         style={Styles.userHeader} />
                     <View style={[Styles.textCon]}>
-                        <CommonText style={[Styles.nameStyle]}>Conan</CommonText>
+                        <View style={[Styles.rowFlex]}>
+                            <CommonText style={[Styles.nameStyle]}>Conan</CommonText>
+                            <IconTextButton
+                                btnStyle={{ borderWidth: 1, borderColor: 'white', width: 80, height: 32 }}
+                                backColor='transparent'>
+                                邀请
+                            </IconTextButton>
+                        </View>
                         <CommonText style={[Styles.goingOnStyle]}>What is going on?</CommonText>
                     </View>
+
                 </View>
                 <View style={[Styles.contentCon]}>
                     <CommonText style={[Styles.contentStyle]}>我想一起去看大海，有人一起吗？</CommonText>
                 </View>
-                <IconTextButton btnStyle={{marginBottom:0}}>
-                    邀请
-                </IconTextButton>
+
             </View>
         );
     }

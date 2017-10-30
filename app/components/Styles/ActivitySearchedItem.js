@@ -9,7 +9,7 @@ export default Styles = StyleSheet.create({
         borderRadius: 5
     },
     firstImage: {
-        height: 250,
+        height: 200,
         width: '100%',
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
@@ -48,6 +48,7 @@ export default Styles = StyleSheet.create({
         borderColor: 'white'
     },
     textCon: {
+        flex: 1,
         justifyContent: 'space-between',
         marginLeft: 10,
         paddingVertical: 5,
@@ -61,11 +62,20 @@ export default Styles = StyleSheet.create({
         color: Colors.grey600,
         fontSize: 16,
     },
-    contentCon:{
-        padding:20,
+    contentCon: {
+        padding: 20,
     },
-    contentStyle:{
-        color:Colors.blueGrey500
-    }
-
+    contentStyle: {
+        color: Colors.blueGrey500
+    },
+    btnStyle: {
+        borderColor: 'white',
+        borderWidth: 1,
+        backgroundColor: 'transparent'
+    },
+    rowFlex: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
 })

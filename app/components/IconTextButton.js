@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, View, Text } from 'react-native';
 import Button from 'apsl-react-native-button'
+
 class IconTextButton extends Component {
     render() {
-        const backColor = this.props.color ? this.props.color : '#2196F3';
+        const backColor = this.props.backColor ? this.props.backColor : '#2196F3';
         const fontColor = this.props.fontColor ? this.props.fontColor : '#fff';
         const borderRadius = this.props.borderRadius ? this.props.borderRadius : 5;
         return (
