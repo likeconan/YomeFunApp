@@ -6,7 +6,9 @@ export default Styles = StyleSheet.create({
     view: {
         margin: 10,
         backgroundColor: 'white',
-        borderRadius: 5
+        borderRadius: 5,
+        borderColor: Colors.grey400,
+        borderWidth: 1
     },
     firstImage: {
         height: 200,
@@ -74,8 +76,13 @@ export default Styles = StyleSheet.create({
         backgroundColor: 'transparent'
     },
     rowFlex: {
+        ...CommonStyle.rowFlexBetween,
         flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
     },
+    bottomCon: {
+        backgroundColor: Colors.blueGrey100,
+        height: 48,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+    }
 })

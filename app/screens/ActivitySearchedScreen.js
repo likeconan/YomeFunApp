@@ -5,16 +5,13 @@ import ActivitySearchedItem from '../components/ActivitySearchedItem';
 import ImageCarousel from '../containers/ImageCarousel';
 import CreateActivityModal from '../containers/CreateActivityModal';
 import ActivityAction from '../components/ActivityAction';
+import Colors from '../themes/Colors';
 
 class ActivitySearchedScreen extends Component {
 
-    componentWillMount() {
-        this.props.navigation.state.params.type
-    }
-
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, backgroundColor: Colors.blueGrey50 }}>
                 <ScrollView >
                     <ActivitySearchedItem />
                     <ImageCarousel />

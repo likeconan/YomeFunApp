@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { View, Image, TouchableOpacity, Button } from 'react-native';
 import CommonText from '../components/CommonText';
 import IconTextButton from '../components/IconTextButton';
+import IconText from '../components/IconText';
+import AccountCircleIcon from '../components/Icons/AccountCircleIcon';
 import Styles from './Styles/ActivitySearchedItem';
 import Images from '../themes/Images';
+
+
 class ActivitySearchedItem extends Component {
 
 
@@ -62,7 +66,11 @@ class ActivitySearchedItem extends Component {
                 <View style={[Styles.contentCon]}>
                     <CommonText style={[Styles.contentStyle]}>我想一起去看大海，有人一起吗？</CommonText>
                 </View>
-
+                <View style={[Styles.bottomCon]}>
+                    <IconText
+                        icon={<AccountCircleIcon/>}
+                        text='hello you'/>                    
+                </View>
             </View>
         );
     }
