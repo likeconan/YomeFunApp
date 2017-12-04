@@ -8,7 +8,7 @@ import UserAuthCtrl from '../realm-controllers/user.auth.controller';
 export function userLogin(obj) {
     return new Promise((resolve, reject) => {
         yoaxios({
-            url: 'users/login',
+            url: 'users/login/client_mobile',
             params: obj
         }).then((data) => {
             return UserAuthCtrl.save({

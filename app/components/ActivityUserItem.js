@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, Button } from 'react-native';
 import Styles from './Styles/ActivityUserItem';
 import Images from '../themes/Images';
-import CommonStyles from '../themes/Common.Style';
+import Colors from '../themes/Colors';
 import DroppedDisplayImages from './DroppedDisplayImages';
 
 class ActivityUserItem extends Component {
@@ -27,7 +27,7 @@ class ActivityUserItem extends Component {
                     </View>
                     <Button
                         title='邀请'
-                        color={CommonStyles.secondary}
+                        color={Colors.secondary}
                         onPress={this._onPress}
                     />
 

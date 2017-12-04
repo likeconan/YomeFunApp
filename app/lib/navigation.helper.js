@@ -1,10 +1,10 @@
-import store from '../store';
-import { toggleSwipeEnable } from '../actions/navigate.action';
+
 
 class NavigationHelper {
 
     constructor() {
-        this.navigation = undefined
+        this.navigation = undefined;
+        this.swipeEnable = true;
     }
 
     setNavigation = (navigation) => {
@@ -18,7 +18,7 @@ class NavigationHelper {
     }
 
     toggleSwipeEnable = (val) => {
-        store.dispatch(toggleSwipeEnable(val))
+        this.swipeEnable = val;
     }
 
 }

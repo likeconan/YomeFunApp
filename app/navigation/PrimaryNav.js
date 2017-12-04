@@ -1,5 +1,7 @@
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, TabBarBottom } from 'react-navigation'
 import React from 'react';
+import { View } from 'react-native';
+import CommonText from '../components/CommonText';
 import ToyIcon from '../components/Icons/ToyIcon';
 import BubbleChatIcon from '../components/Icons/BubbleChatIcon';
 import PersonIcon from '../components/Icons/PersonIcon';
@@ -13,7 +15,6 @@ const PrimaryNav = TabNavigator(
         Activity: {
             screen: ActivityNav,
             navigationOptions: {
-                tabBarLabel: '活动',
                 tabBarIcon: ({ tintColor }) => {
                     return (
                         <ToyIcon color={tintColor} />
@@ -24,7 +25,6 @@ const PrimaryNav = TabNavigator(
         Message: {
             screen: Screens.MessageScreen,
             navigationOptions: {
-                tabBarLabel: '消息',
                 tabBarIcon: ({ tintColor }) => {
                     return (
                         <BubbleChatIcon color={tintColor} />
@@ -35,7 +35,6 @@ const PrimaryNav = TabNavigator(
         StarSocial: {
             screen: Screens.StarSoicalScreen,
             navigationOptions: {
-                tabBarLabel: '明星圈',
                 tabBarIcon: ({ tintColor }) => {
                     return (
                         <CameraIcon color={tintColor} />
@@ -43,23 +42,23 @@ const PrimaryNav = TabNavigator(
                 },
             },
         },
-        Profile: {
-            screen: Screens.ProfileScreen,
-            navigationOptions: {
-                tabBarLabel: '我',
-                tabBarIcon: ({ tintColor }) => (
-                    <PersonIcon color={tintColor} />
-                ),
-            },
-        }
 
     },
     {
-        tabBarPosition: 'bottom',
+        tabBarPosition: 'top',
         initialRouteName: 'Activity',
         lazy: true,
-        screenProps: { hello: true},
+        tabBarComponent: (props) => {
+            return (
+                <View>
+                    <CommonText>123</CommonText>
+                    <TabBarBottom {...props} />
+                </View>
+            )
+
+        },
         tabBarOptions: {
+            showLabel: false,
             activeTintColor: '#03A9F4',
             inactiveTintColor: '#66757f',
             indicatorStyle: {

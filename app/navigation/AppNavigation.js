@@ -8,17 +8,8 @@ import NavigationHelper from '../lib/navigation.helper';
 
 var auth = UserAuthController.getAuth()
 var initialed = auth.isInitialed;
-var signedIn = auth.isAuthorize;
 
-
-var initialRouteName = 'Main';
-if (!initialed) {
-  initialRouteName = 'AppIntro'
-} else if (initialed && !signedIn) {
-  initialRouteName = 'Account'
-}
-initialRouteName = 'Main'
-
+var initialRouteName = initialed ? 'Account' : 'AppIntro';
 
 
 const AppNavigation = StackNavigator(
@@ -31,15 +22,6 @@ const AppNavigation = StackNavigator(
     },
     Account: {
       screen: Screens.AccountScreen,
-      navigationOptions: ({ navigation }) => {
-        NavigationHelper.setNavigation(navigation)
-        return {
-          gesturesEnabled: false
-        }
-      }
-    },
-    Main: {
-      screen: PrimaryNav,
       navigationOptions: ({ navigation }) => {
         NavigationHelper.setNavigation(navigation)
         return {

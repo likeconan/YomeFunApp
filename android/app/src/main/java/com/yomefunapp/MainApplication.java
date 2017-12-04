@@ -2,6 +2,9 @@ package com.yomefunapp;
 
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+
+import org.devio.rn.splashscreen.SplashScreen;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import io.realm.react.RealmReactPackage;
 import com.horcrux.svg.SvgPackage;
 import com.reactnative.photoview.PhotoViewPackage;
@@ -26,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
             new RealmReactPackage(),
             new SvgPackage(),
             new PhotoViewPackage()

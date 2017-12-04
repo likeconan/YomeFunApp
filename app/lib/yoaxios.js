@@ -35,6 +35,7 @@ export default (obj) => {
                 message: Lang.instant(err.response ? err.response.data.message : err.message),
                 type: 'error'
             })
+            reject(err)
         });
     })
     return p;

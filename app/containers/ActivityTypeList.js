@@ -3,7 +3,8 @@ import { View } from 'react-native';
 import ActivityTypeItem from '../components/ActivityTypeItem';
 import { addSearchRecord } from '../actions/search.records.action';
 import { getActivityTypes } from '../actions/activity.type.action';
-import { toggleSwipeEnable } from '../actions/navigate.action';
+import NavigationHelper from '../lib/navigation.helper';
+
 import { connect } from 'react-redux';
 
 @connect((store) => {
@@ -23,13 +24,13 @@ class ActivityTypeList extends Component {
         // addSearchRecord({
         //     activityTypeUUID: item.uuid
         // })
-        this.props.dispatch(toggleSwipeEnable(false))
+        NavigationHelper.toggleSwipeEnable(false)
         this.props.navigation.navigate('ActivitySearched', { type: item.name });
     }
 
     render() {
         const { data } = this.props
-        
+
         return (
             <View style={{ flex: 1 }}>
                 {
